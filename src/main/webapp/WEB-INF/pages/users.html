@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>USERS</title>
+</head>
+<body>
+
+<h1> All users</h1>
+
+<table>
+    <thead>
+    <tr>
+        <th scope="col">id</th>
+        <th scope="col">name</th>
+        <th scope="col">lastName</th>
+        <th scope="col">age</th>
+        <th>action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="user: ${userList}">
+        <td  th:text="${user.id}" />
+        <td  th:text="${user.name}" />
+        <td  th:text="${user.lastName}" />
+        <td  th:text="${user.age}" />
+        <td>
+<!--            <a href="/edit/${user.id}">edit</a>-->
+            <a href="/edit" th:href="@{/edit(id=${user.id})}">edit</a>
+<!--            <form th:action="@{/delete(id=${user.id})}" method="GET">-->
+<!--                <input type="submit" th:value="'Delete'" />-->
+            <a href="/delete" th:href="@{/delete(id=${user.id})}">delete</a>
+<!--            </form>-->
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<a href="/add">Add new user</a>
+<!--в контроллере, написано, что  адрес /edit  посылает на стр editPage-->
+
+</body>
+</html>

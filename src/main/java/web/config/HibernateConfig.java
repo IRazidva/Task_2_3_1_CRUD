@@ -7,28 +7,27 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
-import org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
-import org.springframework.orm.hibernate5.HibernateTransactionManager;
-import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
+
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.JpaVendorAdapter;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
-import org.apache.tomcat.dbcp.dbcp2.BasicDataSource;
 
 import javax.annotation.Resource;
 import javax.sql.DataSource;
 import java.util.Properties;
 
 @Configuration
+@EnableJpaRepositories(basePackages = {"web"})
 @EnableTransactionManagement//(proxyTargetClass = true)
 @ComponentScan("web")
 @PropertySource(value = "classpath:db.properties")
 public class HibernateConfig {
-
+//
     @Resource
     private Environment env;
 
@@ -39,15 +38,13 @@ public class HibernateConfig {
 
         @Bean
         public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
+            JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
             LocalContainerEntityManagerFactoryBean em
                     = new LocalContainerEntityManagerFactoryBean();
-            em.setDataSource(dataSource());
-            //em.setPackagesToScan(new String[] { "web.user" });
-            em.setPackagesToScan("web.user");
-            JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
             em.setJpaVendorAdapter(vendorAdapter);
+            em.setDataSource(dataSource());
+            em.setPackagesToScan("web");
             em.setJpaProperties(additionalProperties());
-
             return em;
         }
 
@@ -68,11 +65,6 @@ public class HibernateConfig {
         transactionManager.setEntityManagerFactory(entityManagerFactory().getObject());
 
         return transactionManager;
-    }
-
-    @Bean
-    public PersistenceExceptionTranslationPostProcessor exceptionTranslation(){
-        return new PersistenceExceptionTranslationPostProcessor();
     }
 
     Properties additionalProperties() {

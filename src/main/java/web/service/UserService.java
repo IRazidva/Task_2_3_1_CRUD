@@ -1,13 +1,14 @@
-package web.servis;
+package web.service;
 
 import web.user.User;
 
 import java.util.List;
 
 public interface UserService {
-    List<User> allUsers(int page);
-    void add(User user);
+    List<User> allUsers();
+    User add();
     void delete(User user);
-    void edit(User user);
+    void deleteById(int id);
+    User edit(User user);
     User getById(int id);
 }

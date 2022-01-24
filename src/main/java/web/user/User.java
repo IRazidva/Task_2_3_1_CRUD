@@ -1,9 +1,10 @@
 package web.user;
 
 //import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 //import javax.persistence.Id;
 import javax.persistence.*;
-//
 
 //import javax.persistence.GeneratedValue;
 //import javax.persistence.GenerationType;
@@ -12,27 +13,27 @@ import javax.persistence.*;
 @Entity
 @Table(name="users")
 public class User {
-        @Id
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
 
-        @Column(name = "name")
+    @Column(name = "name")
     private String name;
 
-        @Column(name = "lastname")
+    @Column(name = "lastname")
     private String lastName;
 
-        @Column(name = "age")
+    @Column(name = "age")
     private int age;
 
-//    public User(Long id, String name, String lastName, Byte age) {
-//        this.id = id;
-//        this.name = name;
-//        this.lastName = lastName;
-//        this.age = age;
-//    }
-    public User(){};
+    public User(/*int id,*/ String name, String lastName, int age) {
+        //this.id = id;
+        this.name = name;
+        this.lastName = lastName;
+        this.age = age;
+    }
+    public User(){}
 
     public int getId() {
         return id;

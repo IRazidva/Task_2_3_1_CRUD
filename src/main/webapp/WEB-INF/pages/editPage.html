@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit</title>
+</head>
+<body>
+<h1 Edit user ></h1>
+<a href="/">back to Users</a>
+<br/><br/>
+<form th:action="@{/edit(id=${user.id})}"
+      th:object="${user}" method="POST">
+    <table border="0">
+        <tr th:if="${user.id}">
+            <td>ID</td>
+            <td>:</td>
+            <td th:utext="${user.id}">...</td>
+        </tr>
+        <tr>
+            <td>Name</td>
+            <td>:</td>
+            <td><input type="text" th:field="*{name}" /></td>
+        </tr>
+        <tr>
+            <td>LastName</td>
+            <td>:</td>
+            <td><input type="text" th:field="*{lastName}" /></td>
+        </tr>
+        <tr>
+            <td>Age</td>
+            <td>:</td>
+            <td><input type="text" th:field="*{age}" /></td>
+        </tr>
+    </table>
+    <input type="submit" th:value="'Update'" />
+</form>
+
+</body>
+</html>
+
+
+<!--<!DOCTYPE html>-->
+<!--<%@ page contentType="text/html;charset=UTF-8" language="java" %>-->
+<!--<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>-->
+<!--<html>-->
+<!--<head>-->
+<!--        <c:if test = "${empty user.name}">-->
+<!--                <title>Add</title>-->
+<!--            </c:if>-->
+<!--       <c:if test="${!empty user.name}">-->
+<!--               <title>Edit</title>-->
+<!--            </c:if>-->
+<!--    </head>-->
+<!--<body>-->
+<!--<c:if test="${empty user.name}">-->
+<!--        <c:url value="/add" var="var"/>-->
+<!--    </c:if>-->
+<!--<c:if test="${!empty user.name}">-->
+<!--    <   <c:url value="/edit" var = "var"/>-->
+<!--    </c:if>-->
+<!--<form action="${var}" method="POST">-->
+<!--       <c:if test="${!empty user.name}">-->
+<!--                <input type="hidden" name = "id" value="${user.id}">-->
+<!--            </c:if>-->
+<!--        <label for="name">Name</label>-->
+<!--        <input type="text" name="name" id="name">-->
+<!--        <label for="lastName">LastName</label>-->
+<!--        <input type="text" name="lastName" id="lastName">-->
+<!--        <label for="age">Age</label>-->
+<!--        <input type="text" name="age" id="age">-->
+<!--        <c:if test="${empty user.name}">-->
+
+<!--           </c:if>-->
+<!--        <input type="submit" value="Edit user">-->
+<!--    </form>-->
+<!--</body>-->
+<!--</html>-->
