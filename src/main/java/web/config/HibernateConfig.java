@@ -76,42 +76,4 @@ public class HibernateConfig {
         return properties;
     }
 
-
-
-
-
-//
-//    private Properties hibernateProperties() {
-//        Properties properties = new Properties();
-//        properties.put("hibernate.dialect", env.getRequiredProperty("hibernate.dialect"));
-//        properties.put("hibernate.show_sql", env.getRequiredProperty("hibernate.show_sql"));
-//        return properties;
-//    }
-//
-//    @Bean
-//    public DataSource dataSource() {
-////        DriverManagerDataSource dataSource = new DriverManagerDataSource();
-//        BasicDataSource dataSource = new BasicDataSource();
-//        dataSource.setDriverClassName(env.getRequiredProperty("db.driver"));
-//        dataSource.setUrl(env.getRequiredProperty("db.url"));
-//        dataSource.setUsername(env.getRequiredProperty("db.username"));
-//        dataSource.setPassword(env.getRequiredProperty("db.password"));
-//        return dataSource;
-//    }
-//
-//    @Bean
-//    public LocalSessionFactoryBean sessionFactory() {
-//        LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
-//        sessionFactory.setDataSource(dataSource());
-//        sessionFactory.setPackagesToScan("web.user");
-//        sessionFactory.setHibernateProperties(hibernateProperties());
-//        return sessionFactory;
-//    }
-//
-//    @Bean
-//    public HibernateTransactionManager transactionManager() {
-//        HibernateTransactionManager transactionManager = new HibernateTransactionManager();
-//        transactionManager.setSessionFactory(sessionFactory().getObject());
-//        return transactionManager;
-//    }
 }

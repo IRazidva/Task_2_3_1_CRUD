@@ -1,14 +1,8 @@
-package web.user;
+package web.model;
 
-//import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
-//import javax.persistence.Id;
 import javax.persistence.*;
-
-//import javax.persistence.GeneratedValue;
-//import javax.persistence.GenerationType;
-
 
 @Entity
 @Table(name="users")
@@ -67,13 +61,6 @@ public class User {
         this.age = age;
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "name='" + name + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", age=" + age +
-                '}';
-    }
+
 }
 

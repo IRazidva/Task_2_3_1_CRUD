@@ -15,28 +15,6 @@ import org.thymeleaf.spring5.view.ThymeleafViewResolver;
 @Configuration
 @EnableWebMvc
 @ComponentScan("web")
-//public class WebConfig implements WebMvcConfigurer {
-//
-////    @Override
-////    public void addResourceHandlers(ResourceHandlerRegistry registry) {
-////        registry.addResourceHandler("/res/**").addResourceLocations("/res/");
-////    }
-//
-//    @Bean
-//    ViewResolver viewResolver() {
-//        InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
-//        viewResolver.setPrefix("/WEB-INF/pages/");
-//        //viewResolver.setPrefix("");
-//        viewResolver.setSuffix("");
-//        return viewResolver;
-//    }
-//
-//    @Override
-//    public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
-//        configurer.enable();
-//    }
-//
-//}
 
 public class WebConfig implements WebMvcConfigurer {
 
