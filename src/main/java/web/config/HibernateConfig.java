@@ -17,24 +17,18 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-import javax.annotation.Resource;
 import javax.sql.DataSource;
 import java.util.Properties;
 
 @Configuration
-@EnableJpaRepositories(basePackages = {"web"})
+@EnableJpaRepositories("web")
 @EnableTransactionManagement//(proxyTargetClass = true)
 @ComponentScan("web")
 @PropertySource(value = "classpath:db.properties")
 public class HibernateConfig {
-//
-    @Resource
-    private Environment env;
 
     @Autowired
-    public void setEnv(Environment env) {
-        this.env = env;
-    }
+    private Environment env;
 
         @Bean
         public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
